@@ -1,7 +1,9 @@
 from typing import Optional
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Define a structured response model
 class WeatherResponse(BaseModel):
@@ -33,17 +35,6 @@ def main():
     
     # Access structured data
     print("\nWeather Information:")
-    print(f"Temperature: {result.data.temperature}°C")
-    print(f"Conditions: {result.data.conditions}")
-    if result.data.forecast:
-        print(f"Forecast: {result.data.forecast}")
-
-    # Example with different query
-    result = weather_agent.run_sync(
-        "How's the weather in Tokyo today?"
-    )
-    
-    print("\nTokyo Weather:")
     print(f"Temperature: {result.data.temperature}°C")
     print(f"Conditions: {result.data.conditions}")
     if result.data.forecast:
